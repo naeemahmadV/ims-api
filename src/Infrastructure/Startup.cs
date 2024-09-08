@@ -89,7 +89,7 @@ public static class Startup
             .UseMultiTenancy()
             .UseAuthorization()
             .UseRequestLogging(config)
-            .UseHangfireDashboard(config)
+            // .UseHangfireDashboard(config)
             .UseOpenApiDocumentation(config);
 
     public static IEndpointRouteBuilder MapEndpoints(this IEndpointRouteBuilder builder)
