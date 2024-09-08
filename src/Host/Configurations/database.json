@@ -1,6 +1,6 @@
 {
   "DatabaseSettings": {
     "DBProvider": "postgresql",
-    "ConnectionString": "Host=localhost;Port=5432;Database=fshDb;Username=postgres;Password=admin;Include Error Detail=true"
+    "ConnectionString": "Host=ep-red-mouse-a1rud3yq.ap-southeast-1.aws.neon.tech;Port=5432;Database=ims-dev;Username=ims-dev_owner;Password=p8qHIK6YsarZ;Include Error Detail=true"
   }
 }
