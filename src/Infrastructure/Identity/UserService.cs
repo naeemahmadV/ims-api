@@ -150,4 +150,11 @@ internal partial class UserService : IUserService
 
         await _events.PublishAsync(new ApplicationUserUpdatedEvent(user.Id));
     }
+
+    public async Task<string> GetUserRole(string UserId, CancellationToken cancellationToken)
+    {
+        var user = await _userManager.FindByIdAsync(UserId);
+        var roles = await _userManager.GetRolesAsync(user);
+        return roles.FirstOrDefault().ToString();
+    }
 }

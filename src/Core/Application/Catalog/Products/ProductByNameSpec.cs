@@ -2,6 +2,5 @@
 
 public class ProductByNameSpec : Specification<Product>, ISingleResultSpecification
 {
-    public ProductByNameSpec(string name) =>
-        Query.Where(p => p.Name == name);
+    public ProductByNameSpec(string name) => Query.Where(p => p.Name == name);
 }

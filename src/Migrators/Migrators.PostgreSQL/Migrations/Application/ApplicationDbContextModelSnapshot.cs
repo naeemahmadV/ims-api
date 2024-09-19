@@ -18,10 +18,503 @@ namespace Migrators.PostgreSQL.Migrations.Application
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("Catalog")
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "7.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Account", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("AccountSourceId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AccountStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("AccountType")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Budget")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("BusinessPhone")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("CityId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Company")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyAddress1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyAddress2")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyAnnualRevenue")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("CompanyNumberofEmployees")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CompanyPostalCode")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("CountryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Designation")
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("DoNotBulkEmail")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool?>("DoNotEmail")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool?>("DoNotPhone")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("DomainORIndustry")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ExpectedStartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("FollowEmail")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("FreeTrialOffered")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("JobDescription")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MobilePhone")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("NDAShared")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("NDASharedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("NumberOfResources")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("PreferredContactMethod")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("PrefferedShift")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid?>("StateId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("TechnicalCoordinatorStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TimeZone")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Topic")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountSourceId");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("Account", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountActivities", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("AccountId")
+                        .IsRequired()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("ActivityType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid?>("AssignTo")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool?>("MarkAsTask")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("TaskCompletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("TaskDueDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("TaskStartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("TaskStatus")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("AccountActivities", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountMedia", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("AccountId");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("MediaId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("MediaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("MediaId");
+
+                    b.ToTable("AccountMedia", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountSalesCoordinator", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("AccountId");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("AccountSalesCoordinator", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountSkill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("AccountId");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("SkillId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SkillId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("AccountSkill", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountSource", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("SourceName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AccountSource", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountSubSkill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("AccountId");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("SubSkillId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SubSkillId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("SubSkillId");
+
+                    b.ToTable("AccountSubSkills", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountTechnicalCoordinator", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("AccountId");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("AccountTechnicalCoordinator", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.ActivityMedia", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AccountActivitiesId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LeadActivitiesId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("MediaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("OpportunityActivitiesId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountActivitiesId");
+
+                    b.HasIndex("LeadActivitiesId");
+
+                    b.HasIndex("MediaId");
+
+                    b.HasIndex("OpportunityActivitiesId");
+
+                    b.ToTable("ActivityMedia", "Catalog");
+                });
 
             modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Brand", b =>
                 {
@@ -65,6 +558,1003 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.ToTable("Brands", "Catalog");
 
                     b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.City", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("StateId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("StateId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("City", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Company", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Country", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Country", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Lead", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Budget")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("BusinessPhone")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("CityId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Company")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyAddress1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyAddress2")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyAnnualRevenue")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("CompanyNumberofEmployees")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CompanyPostalCode")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("CountryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Designation")
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("DoNotBulkEmail")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool?>("DoNotEmail")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool?>("DoNotPhone")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("DomainORIndustry")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ExpectedStartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("FollowEmail")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("FreeTrialOffered")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("JobDescription")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("LeadSourceId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("LeadStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LeadType")
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("MarkAsQualified")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("MobilePhone")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("NDAShared")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("NDASharedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("NumberOfResources")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("PreferredContactMethod")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("PrefferedShift")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("QualifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("QualifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid?>("StateId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("TechnicalCoordinatorStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TimeZone")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Topic")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("LeadSourceId");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("Leads", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadActivities", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("ActivityType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid?>("AssignTo")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("LeadId")
+                        .IsRequired()
+                        .HasColumnType("uuid");
+
+                    b.Property<bool?>("MarkAsTask")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("TaskCompletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("TaskDueDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("TaskStartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("TaskStatus")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
+
+                    b.ToTable("LeadActivities", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadMedia", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LeadId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("LeadId");
+
+                    b.Property<Guid>("MediaId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("MediaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
+
+                    b.HasIndex("MediaId");
+
+                    b.ToTable("LeadMedias", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadSkill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LeadId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("LeadId");
+
+                    b.Property<Guid>("SkillId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SkillId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("LeadSkills", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadSource", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("SourceName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LeadSources", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadSubSkill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LeadId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("LeadId");
+
+                    b.Property<Guid>("SubSkillId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SubSkillId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
+
+                    b.HasIndex("SubSkillId");
+
+                    b.ToTable("LeadSubSkills", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Media", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("AltAttribute")
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("MediaGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("MediaName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<string>("MimeType")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("PathURL")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<string>("TitleAttribute")
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Medias", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Opportunity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Budget")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("BusinessPhone")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("CityId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Company")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyAddress1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyAddress2")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyAnnualRevenue")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("CompanyNumberofEmployees")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CompanyPostalCode")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("CountryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Designation")
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("DoNotBulkEmail")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool?>("DoNotEmail")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool?>("DoNotPhone")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("DomainORIndustry")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ExpectedStartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("FollowEmail")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("FreeTrialOffered")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("JobDescription")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("LeadId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("MobilePhone")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("NDAShared")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("NDASharedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("NumberOfResources")
+                        .HasColumnType("integer");
+
+                    b.Property<bool?>("OpportunityLost")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid?>("OpportunitySourceId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("OpportunityStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("OpportunityType")
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("OpportunityWon")
+                        .HasColumnType("boolean");
+
+                    b.Property<int?>("PreferredContactMethod")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("PrefferedShift")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid?>("StateId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("TechnicalCoordinatorStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TimeZone")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Topic")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("LeadId");
+
+                    b.HasIndex("OpportunitySourceId");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("Opportunity", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunityActivities", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("ActivityType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid?>("AssignTo")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool?>("MarkAsTask")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid?>("OpportunityId")
+                        .IsRequired()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("TaskCompletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("TaskDueDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("TaskStartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("TaskStatus")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OpportunityId");
+
+                    b.ToTable("OpportunityActivities", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunityMedia", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("MediaId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("MediaId");
+
+                    b.Property<Guid>("OpportunityId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("OpportunityId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MediaId");
+
+                    b.HasIndex("OpportunityId");
+
+                    b.ToTable("OpportunityMedia", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunitySalesCoordinator", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("OpportunityId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("OpportunityId");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OpportunityId");
+
+                    b.ToTable("OpportunitySalesCoordinator", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunitySkill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("OpportunityId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("OpportunityId");
+
+                    b.Property<Guid>("SkillId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SkillId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OpportunityId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("OpportunitySkill", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunitySource", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("SourceName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OpportunitySource", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunitySubSkill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("OpportunityId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("OpportunityId");
+
+                    b.Property<Guid>("SubSkillId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SubSkillId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OpportunityId");
+
+                    b.HasIndex("SubSkillId");
+
+                    b.ToTable("OpportunitySubSkill", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunityTechnicalCoordinator", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("OpportunityId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("OpportunityId");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OpportunityId");
+
+                    b.ToTable("OpportunityTechnicalCoordinator", "Catalog");
                 });
 
             modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Product", b =>
@@ -121,6 +1611,196 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.ToTable("Products", "Catalog");
 
                     b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.SalesCoordinator", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LeadId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("LeadId");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
+
+                    b.ToTable("SalesCoordinators", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Skill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Skills", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.State", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CountryId");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("State", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.SubSkill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("SkillId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SkillId");
+
+                    b.Property<string>("SubSkillName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("SubSkills", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.TechnicalCoordinator", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LeadId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("LeadId");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
+
+                    b.ToTable("TechnicalCoordinator", "Catalog");
                 });
 
             modelBuilder.Entity("FSH.WebApi.Infrastructure.Auditing.Trail", b =>
@@ -450,6 +2130,387 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.HasAnnotation("Finbuckle:MultiTenant", true);
                 });
 
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Account", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.AccountSource", "AccountSource")
+                        .WithMany()
+                        .HasForeignKey("AccountSourceId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId");
+
+                    b.Navigation("AccountSource");
+
+                    b.Navigation("City");
+
+                    b.Navigation("Country");
+
+                    b.Navigation("State");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountActivities", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountMedia", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Account", "Account")
+                        .WithMany("AccountMedias")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Media", "Media")
+                        .WithMany()
+                        .HasForeignKey("MediaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Media");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountSalesCoordinator", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Account", "Account")
+                        .WithMany("AccountSalesCoordinators")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountSkill", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Account", "Account")
+                        .WithMany("AccountSkills")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Skill", "Skill")
+                        .WithMany()
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountSubSkill", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Account", "Account")
+                        .WithMany("AccountSubSkills")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.SubSkill", "SubSkill")
+                        .WithMany()
+                        .HasForeignKey("SubSkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("SubSkill");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountTechnicalCoordinator", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Account", "Account")
+                        .WithMany("AccountTechnicalCoordinators")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.ActivityMedia", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.AccountActivities", "AccountActivities")
+                        .WithMany("ActivityMedias")
+                        .HasForeignKey("AccountActivitiesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.LeadActivities", "LeadActivities")
+                        .WithMany("ActivityMedias")
+                        .HasForeignKey("LeadActivitiesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Media", "Media")
+                        .WithMany()
+                        .HasForeignKey("MediaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.OpportunityActivities", "OpportunityActivities")
+                        .WithMany("ActivityMedias")
+                        .HasForeignKey("OpportunityActivitiesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AccountActivities");
+
+                    b.Navigation("LeadActivities");
+
+                    b.Navigation("Media");
+
+                    b.Navigation("OpportunityActivities");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.City", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("State");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Lead", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.LeadSource", "LeadSource")
+                        .WithMany()
+                        .HasForeignKey("LeadSourceId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId");
+
+                    b.Navigation("City");
+
+                    b.Navigation("Country");
+
+                    b.Navigation("LeadSource");
+
+                    b.Navigation("State");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadActivities", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Lead", "Lead")
+                        .WithMany()
+                        .HasForeignKey("LeadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lead");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadMedia", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Lead", "Lead")
+                        .WithMany("LeadMedias")
+                        .HasForeignKey("LeadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Media", "Media")
+                        .WithMany("LeadMedia")
+                        .HasForeignKey("MediaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lead");
+
+                    b.Navigation("Media");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadSkill", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Lead", "Lead")
+                        .WithMany("LeadSkills")
+                        .HasForeignKey("LeadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Skill", "Skill")
+                        .WithMany("LeadSkills")
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lead");
+
+                    b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadSubSkill", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Lead", "Lead")
+                        .WithMany("LeadSubSkills")
+                        .HasForeignKey("LeadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.SubSkill", "SubSkill")
+                        .WithMany("LeadSubSkills")
+                        .HasForeignKey("SubSkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lead");
+
+                    b.Navigation("SubSkill");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Opportunity", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Lead", "Lead")
+                        .WithMany()
+                        .HasForeignKey("LeadId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.OpportunitySource", "OpportunitySource")
+                        .WithMany()
+                        .HasForeignKey("OpportunitySourceId");
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId");
+
+                    b.Navigation("City");
+
+                    b.Navigation("Country");
+
+                    b.Navigation("Lead");
+
+                    b.Navigation("OpportunitySource");
+
+                    b.Navigation("State");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunityActivities", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Opportunity", "Opportunity")
+                        .WithMany()
+                        .HasForeignKey("OpportunityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Opportunity");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunityMedia", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Media", "Media")
+                        .WithMany()
+                        .HasForeignKey("MediaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Opportunity", "Opportunity")
+                        .WithMany("OpportunityMedias")
+                        .HasForeignKey("OpportunityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Media");
+
+                    b.Navigation("Opportunity");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunitySalesCoordinator", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Opportunity", "Opportunity")
+                        .WithMany("SalesCoordinators")
+                        .HasForeignKey("OpportunityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Opportunity");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunitySkill", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Opportunity", "Opportunity")
+                        .WithMany("OpportunitySkills")
+                        .HasForeignKey("OpportunityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Skill", "Skill")
+                        .WithMany()
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Opportunity");
+
+                    b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunitySubSkill", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Opportunity", "Opportunity")
+                        .WithMany("OpportunitySubSkills")
+                        .HasForeignKey("OpportunityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FSH.WebApi.Domain.Catalog.SubSkill", "SubSkill")
+                        .WithMany()
+                        .HasForeignKey("SubSkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Opportunity");
+
+                    b.Navigation("SubSkill");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunityTechnicalCoordinator", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Opportunity", "Opportunity")
+                        .WithMany("TechnicalCoordinators")
+                        .HasForeignKey("OpportunityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Opportunity");
+                });
+
             modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Product", b =>
                 {
                     b.HasOne("FSH.WebApi.Domain.Catalog.Brand", "Brand")
@@ -459,6 +2520,48 @@ namespace Migrators.PostgreSQL.Migrations.Application
                         .IsRequired();
 
                     b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.SalesCoordinator", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Lead", "Lead")
+                        .WithMany("SalesCoordinators")
+                        .HasForeignKey("LeadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lead");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.State", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.SubSkill", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Skill", "Skill")
+                        .WithMany()
+                        .HasForeignKey("SkillId");
+
+                    b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.TechnicalCoordinator", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.Catalog.Lead", "Lead")
+                        .WithMany("TechnicalCoordinators")
+                        .HasForeignKey("LeadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lead");
                 });
 
             modelBuilder.Entity("FSH.WebApi.Infrastructure.Identity.ApplicationRoleClaim", b =>
@@ -510,6 +2613,75 @@ namespace Migrators.PostgreSQL.Migrations.Application
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Account", b =>
+                {
+                    b.Navigation("AccountMedias");
+
+                    b.Navigation("AccountSalesCoordinators");
+
+                    b.Navigation("AccountSkills");
+
+                    b.Navigation("AccountSubSkills");
+
+                    b.Navigation("AccountTechnicalCoordinators");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.AccountActivities", b =>
+                {
+                    b.Navigation("ActivityMedias");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Lead", b =>
+                {
+                    b.Navigation("LeadMedias");
+
+                    b.Navigation("LeadSkills");
+
+                    b.Navigation("LeadSubSkills");
+
+                    b.Navigation("SalesCoordinators");
+
+                    b.Navigation("TechnicalCoordinators");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.LeadActivities", b =>
+                {
+                    b.Navigation("ActivityMedias");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Media", b =>
+                {
+                    b.Navigation("LeadMedia");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Opportunity", b =>
+                {
+                    b.Navigation("OpportunityMedias");
+
+                    b.Navigation("OpportunitySkills");
+
+                    b.Navigation("OpportunitySubSkills");
+
+                    b.Navigation("SalesCoordinators");
+
+                    b.Navigation("TechnicalCoordinators");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.OpportunityActivities", b =>
+                {
+                    b.Navigation("ActivityMedias");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Skill", b =>
+                {
+                    b.Navigation("LeadSkills");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.Catalog.SubSkill", b =>
+                {
+                    b.Navigation("LeadSubSkills");
                 });
 #pragma warning restore 612, 618
         }

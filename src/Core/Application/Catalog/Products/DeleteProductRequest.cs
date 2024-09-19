@@ -12,16 +12,16 @@ public class DeleteProductRequest : IRequest<Guid>
 public class DeleteProductRequestHandler : IRequestHandler<DeleteProductRequest, Guid>
 {
     private readonly IRepository<Product> _repository;
-    private readonly IStringLocalizer _t;
+    private readonly IStringLocalizer<DeleteProductRequestHandler> _localizer;
 
     public DeleteProductRequestHandler(IRepository<Product> repository, IStringLocalizer<DeleteProductRequestHandler> localizer) =>
-        (_repository, _t) = (repository, localizer);
+        (_repository, _localizer) = (repository, localizer);
 
     public async Task<Guid> Handle(DeleteProductRequest request, CancellationToken cancellationToken)
     {
         var product = await _repository.GetByIdAsync(request.Id, cancellationToken);
 
-        _ = product ?? throw new NotFoundException(_t["Product {0} Not Found."]);
+        _ = product ?? throw new NotFoundException(_localizer["product.notfound"]);
 
         // Add Domain Events to be raised after the commit
         product.DomainEvents.Add(EntityDeletedEvent.WithEntity(product));
